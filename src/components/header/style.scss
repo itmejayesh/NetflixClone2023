@@ -1,0 +1,219 @@
+@import "../../mixins.scss";
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  transition: all ease 0.5s;
+  z-index: 2;
+  &.top {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+  }
+  &.show {
+    background-color: var(--black3);
+  }
+  &.hide {
+    transform: translateY(-60px);
+  }
+  .contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    cursor: pointer;
+    img {
+      height: 50px;
+    }
+  }
+  .menuItems {
+    list-style-type: none;
+    display: none;
+    align-items: center;
+    width: 40%;
+    @include md {
+      display: flex;
+      width: 55%;
+    }
+    .menuItem {
+      color: white;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      margin: 0 15px;
+      cursor: pointer;
+      &:hover {
+        color: rgb(192, 30, 30);
+      }
+    }
+    .searchBar {
+      display: flex;
+      align-items: center;
+      position: relative;
+      font-size: 1.5rem;
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      box-shadow: 0 4px 24px hsla(222, 68%, 12%, 0.1);
+      border-radius: 4rem;
+      padding: 2px 10px;
+      overflow: hidden;
+      transition: width 0.5s cubic-bezier(0.9, 0, 0.3, 0.9);
+      &.expanded {
+        width: 50%;
+        input {
+          opacity: 1;
+          pointer-events: initial;
+        }
+        .searchBar__icon {
+          transform: rotate(90deg);
+        }
+      }
+      input {
+        border: none;
+        outline: none;
+        width: calc(100% - 64px);
+        height: 100%;
+        font-weight: 100;
+        font-size: 0.1em;
+        border-radius: 4rem;
+        padding-left: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1.5s;
+      }
+      .searchButton {
+        width: 25px;
+        height: 25px;
+        background-color: rgb(192, 30, 30);
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 3px;
+        margin: auto;
+        display: grid;
+        place-items: center;
+
+        svg {
+          cursor: pointer;
+          color: white;
+          font-size: 0.9rem;
+          position: absolute;
+        }
+        .searchBar__icon {
+          transition: tranform 0.6s cubic-bezier(0.9, 0, 0.3, 0.9);
+        }
+      }
+      @include sm {
+        display: flex;
+      }
+    }
+  }
+
+  //mobile devices menu
+
+  .mobileMenuItems {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+
+    @include md {
+      display: none;
+    }
+    svg {
+      font-size: 18px;
+      color: white;
+    }
+  }
+  .msearchbar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    box-shadow: 0 4px 24px hsla(222, 68%, 12%, 0.1);
+    border-radius: 4rem;
+    padding: 2px 10px;
+    transition: width 0.5s cubic-bezier(0.9, 0, 0.3, 0.9);
+    &.mexpanded {
+      width: 200px;
+      .msearchBar__icon {
+        transform: rotate(90deg);
+      }
+    }
+    input {
+      border: none;
+      outline: none;
+      width: calc(100% - 64px);
+      height: 100%;
+      font-weight: 100;
+      font-size: 0.1em;
+      border-radius: 4rem;
+      padding-left: 14px;
+      transition: opacity 1.5s;
+    }
+
+    .msearchButton {
+      width: 25px;
+      height: 25px;
+      background-color: rgb(192, 30, 30);
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 3px;
+      margin: auto;
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  &.mobileView {
+    background: var(--black3);
+    .mmenuItems {
+      color: white;
+      display: flex;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: var(--black3);
+      flex-direction: column;
+      width: 100%;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      animation: mobileMenu 0.3s ease forwards;
+
+      .mmenuItem {
+        font-size: 20px;
+        width: 20%;
+        height: auto;
+        padding: 15px 20px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &:hover {
+          color: rgb(192, 30, 30);
+        }
+      }
+    }
+  }
+}
+
+@keyframes mobileMenu {
+  0% {
+    transform: translateY(-130%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
