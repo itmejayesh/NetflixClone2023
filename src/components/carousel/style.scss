@@ -14,7 +14,7 @@
 
   .arrow {
     font-size: 30px;
-    color: black;
+    color: rgb(221, 218, 218);
     position: absolute;
     top: 44%;
     transform: translateY(-50%);
@@ -29,10 +29,10 @@
       opacity: 0.8;
     }
   }
-  .carouselLeftNav {
+  .leftNav {
     left: 30px;
   }
-  .carouselRighttNav {
+  .righttNav {
     right: 30px;
   }
 
@@ -67,6 +67,7 @@
       .textBlock {
         display: flex;
         flex-direction: column;
+
         .title {
           width: 100%;
           height: 20px;
@@ -82,20 +83,27 @@
 
   .carouselItems {
     display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
     gap: 10px;
     overflow-y: hidden;
     margin-right: -20px;
     margin-left: -20px;
     padding: 0 20px;
+
     @include md {
+      overflow-x: hidden;
       gap: 20px;
       overflow: hidden;
       margin: 0;
-      padding: 0;
+      padding: 0 10px;
     }
 
     .carouselItem {
+      flex: 0 0 auto;
       width: 125px;
+      margin-top: 10px;
+
       cursor: pointer;
       @include md {
         width: calc(25% - 15px);
@@ -106,6 +114,7 @@
       flex-shrink: 0;
       .poster {
         position: relative;
+        margin-top: 5px;
         width: 100%;
         aspect-ratio: 1 / 1.5;
         background-size: cover;
@@ -115,6 +124,7 @@
         align-items: flex-end;
         justify-content: space-between;
         padding: 10px;
+        transition: transform 0.5s;
         .lazy-load-image-background {
           position: absolute;
           top: 0;
@@ -130,6 +140,9 @@
             object-position: center;
           }
         }
+        &:hover {
+          transform: scale(1.1);
+        }
       }
       .textBlock {
         color: white;
@@ -138,9 +151,14 @@
 
         .title {
           font-size: 15px;
-          margin-bottom: 10px;
-          line-height: 24px;
-          @include ellipsis(1);
+          margin-bottom: 20px;
+          line-height: 1.2em;
+          height: 50px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
           @include md {
             font-size: 20px;
           }

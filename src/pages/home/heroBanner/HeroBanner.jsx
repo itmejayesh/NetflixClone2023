@@ -26,7 +26,7 @@ const HeroBanner = () => {
     setTitle(backdropTitle);
     setSubTitle(backdropSubTitle);
   }, [data, url]);
-  console.log(data);
+  console.log(genres);
 
   return (
     <section className="heroBanner">

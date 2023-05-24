@@ -1,12 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 // import SwtichTabs from "../../../components/switchtabs/SwtichTabs";
 import useFetch from "../../../hooks/useFetch";
 import Carousel from "../../../components/carousel/carousel";
 
 const Trending = () => {
-  const [endpoint, setEndpoint] = useState("day");
-  const { data, laading } = useFetch(`/trending/all/${endpoint}`);
+  // const [endpoint, setEndpoint] = useState("day");
+  const { data, laading } = useFetch(`/trending/all/week`);
 
   // const onTabChange = (tab) => {
   //   switch (tab) {
